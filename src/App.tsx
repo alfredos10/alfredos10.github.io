@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -27,8 +27,8 @@ import React, { ReactNode } from 'react';
 
 import { useEffect, useState } from 'react'
 import './App.css'
-import { buildGame, LoadGameData, splitTeamNames, nbaTeamsAbbreviation, generateYouTubeLinks, isCloseGame } from './api';
-import { Card, CardContent, Typography, Chip, FormControl, InputLabel, MenuItem, Select, Box, SelectChangeEvent, Stack } from '@mui/material';
+import { buildGame, LoadGameData, splitTeamNames, nbaTeamsAbbreviation, generateYouTubeLinks } from './api';
+import { Card, CardContent, Typography, Chip, Box, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { youtubeData } from './YoutubeData';
 import Header from './Header';
@@ -94,7 +94,6 @@ function App() {
   const [closeGameStatuses, setCloseGameStatuses] = useState<boolean[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [youtubeLinks, setYoutubeLinks] = useState<Map<string, string> | null>(null);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   // const [revealScore, setRevealScore] = useState<boolean>(false);
 
 
@@ -159,8 +158,10 @@ function App() {
   // }
 
   const handleDateChange = async (date: string) => {
-    const nbaData = await LoadGameData(date);
     console.log("inside handleDateChange");
+
+    console.log("date is " + date);
+    const nbaData = await LoadGameData(date);
     console.log("nbaData is " + nbaData);
     console.log(nbaData);
     const gamesArray = nbaData.response || [];
