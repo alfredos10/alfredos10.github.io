@@ -488,8 +488,8 @@ async function fetchGames(date: string): Promise<any> {
     const options = {
       method: 'GET',
       url: 'https://api-nba-v1.p.rapidapi.com/games',
-      params: { date: date },
-      // params: {date: '2025-03-07'},
+      // params: { date: date },
+      params: {date: '2025-03-08'},
 
       headers: {
         'x-rapidapi-key': '44698ba992mshb1ed670882daeb5p1e51e8jsn40da83b1be02',
